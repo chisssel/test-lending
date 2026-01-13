@@ -1,0 +1,84 @@
+$color-primary: #28838C;   // Зеленый (основной)
+$color-accent: #F7A420;    // Оранжевый/Желтый (кнопки)
+$color-dark: #19646B;      // Темный (футер/меню)
+$color-text: #333333;      // Основной текст
+$color-bg-light: #F9F9F9;  // Светлый фон секций
+$container-width: 1400px;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif; // ВЗЯТЬ ШРИФТ С МАКЕТА
+  color: $color-text;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: $container-width; // Ширина центральной части (как на макете 1920px)
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.header{
+  height: 320px;
+  display: grid;
+  background: linear-gradient(rgba(25, 100, 107, 0.64), rgba(25, 100, 107, 0.64)),
+  url('images/header-background.jpg');
+  background-size: cover;
+
+  .header-logo{
+
+  }
+}
+
+.header-container{
+  //max-width: $container-width;
+  //margin: 0 auto;
+  padding: 0 260px;
+
+  display: flex;
+  justify-content: space-between;
+
+  &__logo-slogan{
+    display: flex;
+    align-items: center;
+  }
+
+  &__contacts{
+    display: flex;
+    align-items: center;
+
+    &__info{
+      display: flex;
+    }
+  }
+}
+
+
+
+
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 25px; // Закругленные края
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+
+  &--orange {
+    background-color: $color-accent;
+    color: #fff; // или темный, проверьте по макету
+  }
+
+  &--blue {
+    background-color: #2D9CDB; // Синяя кнопка Telegram
+    color: #fff;
+  }
+}
