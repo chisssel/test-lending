@@ -1,8 +1,18 @@
-$color-primary: #28838C;   // Зеленый (основной)
-$color-accent: #F7A420;    // Оранжевый/Желтый (кнопки)
-$color-dark: #19646B;      // Темный (футер/меню)
-$color-text: #333333;      // Основной текст
-$color-bg-light: #F9F9F9;  // Светлый фон секций
+@font-face {
+  font-family: 'Akrobat';
+  src: url('fonts/AkrobatFont/Akrobat-Bold.otf');
+  font-weight: 700;
+  font-style: normal;
+}
+
+$color-primary: #28838C;
+$color-accent: #F7A420;
+$color-dark: #19646B;
+
+$color-header: #FFFFFF;
+$color-text: #333333;
+$color-bg-light: #F9F9F9;
+
 $container-width: 1400px;
 
 * {
@@ -18,17 +28,21 @@ body {
 }
 
 .container {
-  max-width: $container-width; // Ширина центральной части (как на макете 1920px)
+  max-width: $container-width;
   margin: 0 auto;
   padding: 0 15px;
 }
 
 .header{
+  min-height: 200px;
+  padding: 30px 0;
   height: 320px;
-  display: grid;
+  display: flex;
+  align-items: center;
   background: linear-gradient(rgba(25, 100, 107, 0.64), rgba(25, 100, 107, 0.64)),
   url('images/header-background.jpg');
   background-size: cover;
+  color: $color-header;
 
   .header-logo{
 
@@ -36,24 +50,79 @@ body {
 }
 
 .header-container{
-  //max-width: $container-width;
-  //margin: 0 auto;
-  padding: 0 260px;
+  max-width: $container-width;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
 
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px;
 
   &__logo-slogan{
     display: flex;
     align-items: center;
+    gap: 32px;
+
+    svg{
+      //max-height: 192px;
+      //ВОЗМОЖНО ПРИГОДИТСЯ ДЛЯ АДАПТИВА
+    }
+
+    .slogan{
+      font-family: 'Akrobat';
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 40px;
+    }
   }
 
   &__contacts{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    gap: 32px;
+  }
 
-    &__info{
-      display: flex;
+  &__contacts__info {
+    display: grid;
+    grid-template-columns: 24px auto;
+    align-items: center;
+    column-gap: 12px;
+    row-gap: 16px;
+    color: $color-header;
+
+    h6 {
+      grid-column: 1 / -1;
+      font-family: Calibri;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 16px;
+    }
+
+    a {
+      text-decoration: none;
+      color: $color-header;
+    }
+
+    .contact-phone {
+      font-family: Akrobat;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 40px;
+      white-space: nowrap;
+    }
+
+    .contact-whatsapp {
+      font-family: Akrobat;
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 24px;
+    }
+
+
+    svg {
     }
   }
 }
@@ -65,7 +134,7 @@ body {
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-radius: 25px; // Закругленные края
+  border-radius: 25px;
   text-decoration: none;
   text-transform: uppercase;
   font-weight: bold;
@@ -74,11 +143,11 @@ body {
 
   &--orange {
     background-color: $color-accent;
-    color: #fff; // или темный, проверьте по макету
+    color: #fff;
   }
 
   &--blue {
-    background-color: #2D9CDB; // Синяя кнопка Telegram
+    background-color: #2D9CDB;
     color: #fff;
   }
 }
