@@ -7,13 +7,16 @@
 
 $color-primary: #28838C;
 $color-accent: #F7A420;
-$color-dark: #19646B;
+$color-nav-bg: #19646B;
 
 $color-header: #FFFFFF;
+$color-nav: #FFFFFF7A;
+$color-nav-hover: #FFFFFF;
 $color-text: #333333;
 $color-bg-light: #F9F9F9;
 
-$container-width: 1400px;
+$nav-width: 1400px;
+$nav-height: 64px;
 
 * {
   box-sizing: border-box;
@@ -22,13 +25,13 @@ $container-width: 1400px;
 }
 
 body {
-  font-family: 'Roboto', sans-serif; // ВЗЯТЬ ШРИФТ С МАКЕТА
+  font-family: 'Calibri', sans-serif;
   color: $color-text;
   line-height: 1.5;
 }
 
 .container {
-  max-width: $container-width;
+  //max-width: $container-width;
   margin: 0 auto;
   padding: 0 15px;
 }
@@ -50,7 +53,6 @@ body {
 }
 
 .header-container{
-  max-width: $container-width;
   margin: 0 auto;
   padding: 0 15px;
   width: 100%;
@@ -126,6 +128,81 @@ body {
     }
   }
 }
+
+.nav {
+  max-width: $nav-width;
+  background-color: $color-nav-bg;
+  margin: 40px auto 80px auto;
+  border-radius: 50px;
+}
+
+.nav-container {
+  margin: 0 auto;
+  padding: 0 15px;
+  height: $nav-height;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__list{
+    list-style: none;
+    display: flex;
+    height: 100%;
+  }
+}
+
+.list-item {
+  //height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    height: $nav-height;
+    width: 1px;
+    background-color: #FFFFFF52;
+  }
+
+  &:last-child::after {
+    display: none;
+  }
+}
+
+.item-link {
+  color: $color-nav;
+  font-family: Akrobat;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  padding: 0 50px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  &:hover, &.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: $color-nav-hover;
+  }
+}
+
+.nav-btn {
+  font-family: Akrobat;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 16px;
+  text-transform: uppercase;
+  padding: 12px 25px;
+  white-space: nowrap;
+}
+
+
+
 
 
 
