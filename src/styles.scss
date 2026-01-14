@@ -15,7 +15,7 @@ $color-nav-hover: #FFFFFF;
 $color-text: #333333;
 $color-bg-light: #F9F9F9;
 
-$nav-width: 1400px;
+$container-width: 1400px;
 $nav-height: 64px;
 
 * {
@@ -25,7 +25,7 @@ $nav-height: 64px;
 }
 
 body {
-  font-family: 'Calibri', sans-serif;
+  font-family: 'Calibri', sans-serif; // ВЗЯТЬ ШРИФТ С МАКЕТА
   color: $color-text;
   line-height: 1.5;
 }
@@ -53,6 +53,7 @@ body {
 }
 
 .header-container{
+  max-width: $container-width;
   margin: 0 auto;
   padding: 0 15px;
   width: 100%;
@@ -130,7 +131,7 @@ body {
 }
 
 .nav {
-  max-width: $nav-width;
+  max-width: $container-width;
   background-color: $color-nav-bg;
   margin: 40px auto 80px auto;
   border-radius: 50px;
@@ -156,6 +157,15 @@ body {
   display: flex;
   align-items: center;
   position: relative;
+
+  &.dropdown:hover {
+    .dropdown-menu {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
 
   &::after {
     content: '';
@@ -190,6 +200,44 @@ body {
     color: $color-nav-hover;
   }
 }
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 220px;
+  background-color: $color-primary;
+  padding: 10px 0;
+  list-style: none;
+  z-index: 100;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+
+  li {
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255, 0.05);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    a {
+      display: block;
+      padding: 12px 20px;
+      color: $color-header;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 16px;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+  }
+}
+
 
 .nav-btn {
   font-family: Akrobat;
