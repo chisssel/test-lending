@@ -53,60 +53,6 @@ $typography-map: (
                 "font-weight": 700,
                 "font-family": Akrobat
         ),
-        //"h2-title":(
-        //        "font-size": 40px,
-        //        "line-height": 1.2,
-        //        "font-weight": 700,
-        //        "font-family": Akrobat
-        //),
-        //"h6-label":(
-        //        "font-size": 16px,
-        //        "line-height": 16px,
-        //        "font-weight": 400,
-        //        "font-family": Calibri
-        //),
-        //"nav-link":(
-        //        "font-size": 16px,
-        //        "line-height": 16px,
-        //        "font-weight": 700,
-        //        "font-family": Akrobat
-        //),
-        //"btn-text":(
-        //        "font-size": 24px,
-        //        "line-height": 24px,
-        //        "font-weight": 700,
-        //        "font-family": Akrobat
-        //),
-        //"phone-lg":(
-        //        "font-size": 40px,
-        //        "line-height": 40px,
-        //        "font-weight": 700px,
-        //        "font-family": Akrobat
-        //),
-        //"phone-sm":(
-        //        "font-size": 24px,
-        //        "line-height": 24px,
-        //        "font-weight": 700,
-        //        "font-family": Akrobat
-        //),
-        //"body-text":(
-        //        "font-size": 24px,
-        //        "line-height": 32px,
-        //        "font-weight": 400,
-        //        "font-family": Calibri
-        //),
-        //"body-sm":(
-        //        "font-size": 16px,
-        //        "line-height": 16px,
-        //        "font-weight": 400,
-        //        "font-family":  Calibri
-        //),
-        //"card-title":(
-        //        "font-size": 24px,
-        //        "line-height": 32px,
-        //        "font-weight": 400,
-        //        "font-family": Calibri
-        //),
 );
 
 
@@ -135,43 +81,6 @@ $typography-map: (
   @include apply-font("phone-desktop-small");
 }
 
-
-
-//@mixin typography-h2-title {
-//  @include apply-font("h2-title");
-//}
-//
-//@mixin typography-h6-label {
-//  @include apply-font("h6-label");
-//}
-//
-//@mixin typography-nav-link {
-//  @include apply-font("nav-link");
-//}
-//
-//@mixin typography-btn-text {
-//  @include apply-font("btn-text");
-//}
-//
-//@mixin typography-phone-lg {
-//  @include apply-font("phone-lg");
-//}
-//
-//@mixin typography-phone-sm {
-//  @include apply-font("phone-sm");
-//}
-//
-//@mixin typography-body-text {
-//  @include apply-font("body-text");
-//}
-//
-//@mixin typography-body-sm {
-//  @include apply-font("body-sm");
-//}
-//
-//@mixin typography-card-title {
-//  @include apply-font("card-title");
-//}
 
 
 
@@ -240,12 +149,17 @@ body {
     gap: 32px;
     @media(width < $breakpoint-desktop-small) {
       flex-wrap: nowrap;
+      gap: 16px;
     }
 
     &__logo-slogan{
       display: flex;
       align-items: center;
       gap: 32px;
+
+      @media(width < $breakpoint-desktop-small) {
+        gap: 16px;
+      }
 
       .slogan{
         @include typography-slogan-desktop-large;
@@ -262,6 +176,10 @@ body {
       display: flex;
       align-items: flex-start;
       gap: 32px;
+
+      @media(width < $breakpoint-desktop-small) {
+        gap: 16px;
+      }
     }
 
     &__contacts__info {
@@ -305,10 +223,7 @@ body {
 
 
 .nav {
-  //display: flex;
-  //justify-content: center;
   margin: 40px auto 80px auto;
-
 
   .nav-container {
     max-width: $container-width-desktop-large;
@@ -328,16 +243,13 @@ body {
     @media(width < $breakpoint-desktop-small) {
       max-width: $container-width-desktop-small;
       margin: 40px auto 80px auto;
+      text-align: center;
     }
-
-
 
     &__list{
       list-style: none;
       display: flex;
       height: 100%;
-
-
     }
   }
 
@@ -349,9 +261,12 @@ body {
     &.dropdown:hover {
       .dropdown-menu {
         display: block;
-        opacity: 1;
-        visibility: visible;
+        //visibility: visible;
         transform: translateY(0);
+
+        @media(width < $container-width-desktop-large){
+
+        }
       }
     }
 
@@ -399,7 +314,8 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
-    min-width: 220px;
+    //min-width: 220px;
+    width: 100%;
     background-color: $color-primary;
     padding: 10px 0;
     list-style: none;
@@ -469,24 +385,34 @@ body {
         color: $color-about-text;
         margin-bottom: 30px;
 
-        //@media(width < $container-width-desktop-large){
-        //
-        //}
-
         p {
           margin-bottom: 40px;
+
+          &:last-child{
+            @media(width < $breakpoint-desktop-small) {
+              display: none;
+            }
+          }
         }
-      }
 
-      .link-orange {
-        color: $color-accent;
-        text-decoration: underline;
-        font-weight: 400;
-        font-size: 24px;
-        line-height: 32px;
+        .link-orange {
+          color: $color-accent;
+          text-decoration: underline;
+          font-weight: 400;
+          font-size: 24px;
+          line-height: 32px;
 
-        &:hover {
-          text-decoration: none;
+          &:hover {
+            text-decoration: none;
+          }
+        }
+
+        .mobile-link {
+          display: none;
+
+          @media(width < $breakpoint-desktop-small) {
+            display: inline;
+          }
         }
       }
 
@@ -521,7 +447,6 @@ body {
       .slider-arrow {
         position: absolute;
         top: 50%;
-        transform: translateY(-50%);
         width: 64px;
         height: 64px;
         background-color: $color-primary;
@@ -533,16 +458,21 @@ body {
         justify-content: center;
         z-index: 2;
 
+
         &:hover {
           background-color: $color-nav-bg;
         }
 
         &.slider-left {
-          left: +45px;
+          left: 50%;
+          right: auto;
+          transform: translate(-50%, -50%) translateX(-160px);
         }
 
         &.slider-right {
-          right: +45px;
+          left: 50%;
+          right: auto;
+          transform: translate(-50%, -50%) translateX(160px);
         }
       }
 
@@ -637,6 +567,10 @@ body {
           color: $color-text;
           margin-bottom: 16px;
           min-height: 48px;
+
+          @media(width < $breakpoint-desktop-small){
+            font-size: 22px;
+          }
         }
 
         .card-btn {
@@ -942,16 +876,37 @@ body {
     align-items: center;
     position: relative;
 
+    /////////////////
+    @media(width < $breakpoint-desktop-small){
+      flex-wrap: wrap;
+    }
+    //////////////////
+
     .group-phones {
       display: flex;
       gap: 24px;
       align-items: flex-start;
+
+      @media(width < $breakpoint-desktop-small){
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        grid-template-rows: auto auto;
+        column-gap: 40px;
+        row-gap: 20px;
+        align-items: start;
+      }
 
       .footer-address{
         font-family: Akrobat;
         font-weight: 700;
         font-size: 18px;
         line-height: 24px;
+
+        p{
+          @media(width < $breakpoint-desktop-small){
+            display: none;
+          }
+        }
       }
 
       .phone-item {
@@ -985,6 +940,12 @@ body {
           font-weight: 700;
           font-size: 18px;
           line-height: 24px;
+
+          @media(width < $breakpoint-desktop-small){
+            position: static;
+            margin-top: 25px;
+            transform: none;
+          }
         }
 
         span {
@@ -1005,8 +966,43 @@ body {
         }
       }
 
+      /////////////////////////////////
+      @media(width < $breakpoint-desktop-small){
+        /* 2. Секретарь: 1 колонка, 1 строка */
+        .phone-item:nth-of-type(2) {
+          grid-column: 1;
+          grid-row: 1;
+        }
+
+        /* 3. Абонентский отдел: 1 колонка, 2 строка (под секретарем) */
+        .phone-item:nth-of-type(4) {
+          grid-column: 1;
+          grid-row: 2;
+        }
+
+        /* 4. Диспетчерская: 2 колонка, растягиваем на 2 строки, чтобы WhatsApp влез */
+        .phone-item:nth-of-type(3) {
+          grid-column: 2;
+          grid-row: 1 / span 2;
+        }
+
+        .phone-item:nth-of-type(5) {
+          grid-column: 3;
+          grid-row: 1 / span 2;
+          align-self: center;
+        }
+      }
+        //////////////////////////////////////////
+
       .telegram-icon {
         margin-top: 20px;
+
+        @media(width < $breakpoint-desktop-small){
+          grid-column: 4;
+          grid-row: 1 / span 2;
+          align-self: center;
+          margin-top: 0;
+        }
       }
     }
 
