@@ -29,118 +29,149 @@ $breakpoint-phone-large: 576px;
 $breakpoint-phone-small: 400px;
 
 $typography-map: (
-        "h1-slogan":(
+        "slogan-desktop-large":(
                 "font-size": 32px,
                 "line-height": 40px,
                 "font-weight": 700,
                 "font-family": Akrobat
         ),
-        "h2-title":(
-                "font-size": 40px,
-                "line-height": 1.2,
-                "font-weight": 700,
-                "font-family": Akrobat
-        ),
-        "h6-label":(
-                "font-size": 16px,
-                "line-height": 16px,
-                "font-weight": 400,
-                "font-family": Calibri
-        ),
-        "nav-link":(
-                "font-size": 16px,
-                "line-height": 16px,
-                "font-weight": 700,
-                "font-family": Akrobat
-        ),
-        "btn-text":(
+        "slogan-desktop-small":(
                 "font-size": 24px,
-                "line-height": 24px,
+                "line-height": 32px,
                 "font-weight": 700,
                 "font-family": Akrobat
         ),
-        "phone-lg":(
+        "phone-desktop-large":(
                 "font-size": 40px,
                 "line-height": 40px,
-                "font-weight": 700px,
-                "font-family": Akrobat
-        ),
-        "phone-sm":(
-                "font-size": 24px,
-                "line-height": 24px,
                 "font-weight": 700,
                 "font-family": Akrobat
         ),
-        "body-text":(
-                "font-size": 24px,
+        "phone-desktop-small":(
+                "font-size": 32px,
                 "line-height": 32px,
-                "font-weight": 400,
-                "font-family": Calibri
+                "font-weight": 700,
+                "font-family": Akrobat
         ),
-        "body-sm":(
-                "font-size": 16px,
-                "line-height": 16px,
-                "font-weight": 400,
-                "font-family":  Calibri
-        ),
-        "card-title":(
-                "font-size": 24px,
-                "line-height": 32px,
-                "font-weight": 400,
-                "font-family": Calibri
-        ),
-
+        //"h2-title":(
+        //        "font-size": 40px,
+        //        "line-height": 1.2,
+        //        "font-weight": 700,
+        //        "font-family": Akrobat
+        //),
+        //"h6-label":(
+        //        "font-size": 16px,
+        //        "line-height": 16px,
+        //        "font-weight": 400,
+        //        "font-family": Calibri
+        //),
+        //"nav-link":(
+        //        "font-size": 16px,
+        //        "line-height": 16px,
+        //        "font-weight": 700,
+        //        "font-family": Akrobat
+        //),
+        //"btn-text":(
+        //        "font-size": 24px,
+        //        "line-height": 24px,
+        //        "font-weight": 700,
+        //        "font-family": Akrobat
+        //),
+        //"phone-lg":(
+        //        "font-size": 40px,
+        //        "line-height": 40px,
+        //        "font-weight": 700px,
+        //        "font-family": Akrobat
+        //),
+        //"phone-sm":(
+        //        "font-size": 24px,
+        //        "line-height": 24px,
+        //        "font-weight": 700,
+        //        "font-family": Akrobat
+        //),
+        //"body-text":(
+        //        "font-size": 24px,
+        //        "line-height": 32px,
+        //        "font-weight": 400,
+        //        "font-family": Calibri
+        //),
+        //"body-sm":(
+        //        "font-size": 16px,
+        //        "line-height": 16px,
+        //        "font-weight": 400,
+        //        "font-family":  Calibri
+        //),
+        //"card-title":(
+        //        "font-size": 24px,
+        //        "line-height": 32px,
+        //        "font-weight": 400,
+        //        "font-family": Calibri
+        //),
 );
 
 
 @mixin apply-font($font-style) {
   $font-map: map.get($typography-map, $font-style);
 
-  font-size: map.get($font-map, "size");
+  font-size: map.get($font-map, "font-size");
   line-height: map.get($font-map, "line-height");
-  font-weight: map.get($font-map, "weight");
+  font-weight: map.get($font-map, "font-weight");
   font-family: map.get($font-map, "font-family");
 }
 
-@mixin typography-h1-slogan {
-  @include apply-font("h1-slogan");
+@mixin typography-slogan-desktop-large {
+  @include apply-font("slogan-desktop-large");
 }
 
-@mixin typography-h2-title {
-  @include apply-font("h2-title");
+@mixin typography-slogan-desktop-small {
+  @include apply-font("slogan-desktop-small");
 }
 
-@mixin typography-h6-label {
-  @include apply-font("h6-label");
+@mixin typography-phone-desktop-large {
+  @include apply-font("phone-desktop-large");
 }
 
-@mixin typography-nav-link {
-  @include apply-font("nav-link");
+@mixin typography-phone-desktop-small {
+  @include apply-font("phone-desktop-small");
 }
 
-@mixin typography-btn-text {
-  @include apply-font("btn-text");
-}
 
-@mixin typography-phone-lg {
-  @include apply-font("phone-lg");
-}
 
-@mixin typography-phone-sm {
-  @include apply-font("phone-sm");
-}
-
-@mixin typography-body-text {
-  @include apply-font("body-text");
-}
-
-@mixin typography-body-sm {
-  @include apply-font("body-sm");
-}
-
-@mixin typography-card-title {
-  @include apply-font("card-title");
-}
+//@mixin typography-h2-title {
+//  @include apply-font("h2-title");
+//}
+//
+//@mixin typography-h6-label {
+//  @include apply-font("h6-label");
+//}
+//
+//@mixin typography-nav-link {
+//  @include apply-font("nav-link");
+//}
+//
+//@mixin typography-btn-text {
+//  @include apply-font("btn-text");
+//}
+//
+//@mixin typography-phone-lg {
+//  @include apply-font("phone-lg");
+//}
+//
+//@mixin typography-phone-sm {
+//  @include apply-font("phone-sm");
+//}
+//
+//@mixin typography-body-text {
+//  @include apply-font("body-text");
+//}
+//
+//@mixin typography-body-sm {
+//  @include apply-font("body-sm");
+//}
+//
+//@mixin typography-card-title {
+//  @include apply-font("card-title");
+//}
 
 
 
@@ -207,6 +238,9 @@ body {
     align-items: center;
     flex-wrap: wrap;
     gap: 32px;
+    @media(width < $breakpoint-desktop-small) {
+      flex-wrap: nowrap;
+    }
 
     &__logo-slogan{
       display: flex;
@@ -214,10 +248,13 @@ body {
       gap: 32px;
 
       .slogan{
-        font-family: 'Akrobat';
-        font-weight: 700;
-        font-size: 32px;
-        line-height: 40px;
+        @include typography-slogan-desktop-large;
+
+        @media(width < $breakpoint-desktop-small) {
+          white-space: nowrap;
+          @include typography-slogan-desktop-small;
+        }
+
       }
     }
 
@@ -249,11 +286,11 @@ body {
       }
 
       .contact-phone {
-        font-family: Akrobat;
-        font-weight: 700;
-        font-size: 40px;
-        line-height: 40px;
         white-space: nowrap;
+        @include typography-phone-desktop-large;
+        @media(width < $breakpoint-desktop-small) {
+          @include typography-phone-desktop-small;
+        }
       }
 
       .contact-whatsapp {
@@ -268,22 +305,30 @@ body {
 
 
 .nav {
-  max-width: $container-width-desktop-large;
-  background-color: $color-nav-bg;
+  //display: flex;
+  //justify-content: center;
   margin: 40px auto 80px auto;
-  border-radius: 50px;
 
-  @media(width < $container-width-desktop-large){
-    margin: 40px 16px 80px 16px;
-  }
 
   .nav-container {
+    max-width: $container-width-desktop-large;
+    border-radius: 50px;
+
+    background-color: $color-nav-bg;
     margin: 0 auto;
     padding: 0 15px;
     height: $nav-height;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media(width < $container-width-desktop-large){
+      margin: 40px 16px 80px 16px;
+    }
+    @media(width < $breakpoint-desktop-small) {
+      max-width: $container-width-desktop-small;
+      margin: 40px auto 80px auto;
+    }
 
 
 
