@@ -17,14 +17,16 @@ $color-text: #333333;
 $color-bg-light: #F9F9F9;
 $color-about-text: #666666;
 
-$container-width: 1400px;
+$container-width-desktop-large: 1400px;
+$container-width-desktop-small: 992px;
 $nav-height: 64px;
 
-$breakpoint-desktop: 1200px;
-$breakpoint-tablet-m: 992px;
-$breakpoint-tablet-s: 768px;
-$breakpoint-phone-m: 576px;
-$breakpoint-phone-s: 400px;
+$breakpoint-desktop-large: 1920px;
+$breakpoint-desktop-small: 1216px;
+$breakpoint-tablet-large: 992px;
+$breakpoint-tablet-small: 768px;
+$breakpoint-phone-large: 576px;
+$breakpoint-phone-small: 400px;
 
 $typography-map: (
         "h1-slogan":(
@@ -149,15 +151,22 @@ $typography-map: (
 }
 
 body {
-  font-family: 'Calibri', sans-serif; // ВЗЯТЬ ШРИФТ С МАКЕТА
+  font-family: 'Calibri', sans-serif;
   color: $color-text;
   line-height: 1.5;
 }
 
 .container {
-  max-width: $container-width;
+  max-width: $container-width-desktop-large;
   margin: 0 auto;
-  //padding: 0 15px;
+
+  @media(width < $container-width-desktop-large){
+    padding: 0 16px;
+  }
+
+  @media(width < $breakpoint-desktop-small) {
+    max-width: $container-width-desktop-small;
+  }
 }
 
 .title{
@@ -259,10 +268,14 @@ body {
 
 
 .nav {
-  max-width: $container-width;
+  max-width: $container-width-desktop-large;
   background-color: $color-nav-bg;
   margin: 40px auto 80px auto;
   border-radius: 50px;
+
+  @media(width < $container-width-desktop-large){
+    margin: 40px 16px 80px 16px;
+  }
 
   .nav-container {
     margin: 0 auto;
@@ -271,6 +284,8 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+
 
     &__list{
       list-style: none;
@@ -322,6 +337,11 @@ body {
     height: 100%;
     display: flex;
     align-items: center;
+
+    @media(width < $container-width-desktop-large){
+      padding: 0 28px;
+    }
+
 
     &:hover, &.active {
       background-color: rgba(255, 255, 255, 0.1);
@@ -403,6 +423,10 @@ body {
         line-height: 32px;
         color: $color-about-text;
         margin-bottom: 30px;
+
+        //@media(width < $container-width-desktop-large){
+        //
+        //}
 
         p {
           margin-bottom: 40px;
@@ -511,6 +535,10 @@ body {
       gap: 40px;
       margin-bottom: 50px;
 
+      @media(width < $container-width-desktop-large){
+        justify-items: center;
+      }
+
       &__card {
         background-color: #FFFFFF;
         border-radius: 32px;
@@ -521,6 +549,10 @@ body {
         flex-direction: column;
         align-items: center;
         transition: transform 0.3s, box-shadow 0.3s;
+
+        @media(width < $container-width-desktop-large){
+          width: calc(100%);
+        }
 
         .card-icon {
           margin-bottom: 16px;
@@ -671,6 +703,12 @@ body {
 
       &__gosuslugi{
         grid-column: 3 / 5;
+
+        svg{
+          @media(width < $container-width-desktop-large){
+            width: calc(100%);
+          }
+        }
       }
     }
   }
