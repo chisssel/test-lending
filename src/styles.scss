@@ -20,6 +20,7 @@ $color-about-text: #666666;
 $container-width-desktop-large: 1400px;
 $container-width-desktop-small: 992px;
 $container-width-tablet-large: 768px;
+$container-width-tablet-small: 576px;
 $nav-height: 64px;
 
 $breakpoint-desktop-large: 1920px;
@@ -144,6 +145,12 @@ $typography-map: (
                 "font-weight": 700,
                 "font-family": Akrobat
         ),
+        "footer-address-mobile":(
+                "font-size": 16px,
+                "line-height": 24px,
+                "font-weight": 700,
+                "font-family": Akrobat
+        ),
         "footer-contact":(
                 "font-size": 14px,
                 "line-height": 16px,
@@ -251,6 +258,10 @@ $typography-map: (
   @include apply-font("footer-address");
 }
 
+@mixin typography-footer-address-mobile{
+  @include apply-font("footer-address-mobile");
+}
+
 @mixin typography-footer-contact{
   @include apply-font("footer-contact");
 }
@@ -311,7 +322,7 @@ body {
 }
 
 .header{
-  min-height: 160px;
+  min-height: 128px;
   padding: 30px 0;
   height: 320px;
   display: flex;
@@ -332,10 +343,6 @@ body {
     align-items: center;
     flex-wrap: wrap;
     gap: 32px;
-
-    //&:last-child{
-    //  gap: 0px;
-    //}
 
     @media(width < $breakpoint-desktop-small) {
       flex-wrap: nowrap;
@@ -383,6 +390,10 @@ body {
 
       @media(width < $breakpoint-desktop-small) {
         gap: 16px;
+      }
+
+      @media(width < $breakpoint-tablet-small) {
+        display: none;
       }
     }
 
@@ -588,8 +599,16 @@ body {
     justify-content: space-between;
     gap: 40px;
 
+    @media(width < $breakpoint-tablet-small) {
+      flex-direction: column;
+    }
+
     &__content{
       max-width: 60%;
+
+      @media(width < $breakpoint-tablet-small) {
+        max-width: 100%;
+      }
 
       .text{
         color: $color-about-text;
@@ -658,7 +677,9 @@ body {
       justify-content: center;
       flex-direction: column;
 
-
+      @media(width < $breakpoint-tablet-small) {
+        width: 100%;
+      }
 
       .slider-certificate {
         position: relative;
@@ -669,6 +690,14 @@ body {
           @media(width < $breakpoint-tablet-large) {
             width: 280px;
             height: auto;
+          }
+
+          @media(width < $breakpoint-tablet-small) {
+            width: 460px;
+          }
+
+          @media(width < $breakpoint-phone-large) {
+            width: 280px;
           }
         }
       }
@@ -700,6 +729,14 @@ body {
           @media(width < $breakpoint-tablet-large) {
             transform: translate(-50%, -50%) translateX(-120px);
           }
+
+          @media(width < $breakpoint-tablet-small) {
+            transform: translate(-50%, -50%) translateX(-220px);
+          }
+
+          @media(width < $breakpoint-phone-large) {
+            transform: translate(-50%, -50%) translateX(-140px);
+          }
         }
 
         &.slider-right {
@@ -709,6 +746,14 @@ body {
 
           @media(width < $breakpoint-tablet-large) {
             transform: translate(-50%, -50%) translateX(120px);
+          }
+
+          @media(width < $breakpoint-tablet-small) {
+            transform: translate(-50%, -50%) translateX(220px);
+          }
+
+          @media(width < $breakpoint-phone-large) {
+            transform: translate(-50%, -50%) translateX(140px);
           }
         }
       }
@@ -755,6 +800,10 @@ body {
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;
         gap: 16px;
+      }
+
+      @media(width < $breakpoint-phone-large){
+        grid-template-columns: 1fr;
       }
 
       &__card {
@@ -961,8 +1010,20 @@ body {
         gap: 16px;
         margin-bottom: 32px;
 
+        @media(width < $breakpoint-phone-large){
+          margin-bottom: 16px;
+        }
+
         &.three--cols {
           grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        @media(width < $breakpoint-phone-large){
+          grid-template-columns: 1fr;
+
+          &.three--cols {
+            grid-template-columns: 1fr;
+          }
         }
       }
 
@@ -1095,13 +1156,17 @@ body {
       @include typography-button;
     }
   }
-  }
+}
 
 
 .footer {
   background-color: $color-nav-bg;
   padding: 80px 0;
   color: #fff;
+
+  @media(width < $breakpoint-tablet-large) {
+    padding: 24px 0;
+  }
 
   .footer-container {
     display: flex;
@@ -1111,6 +1176,24 @@ body {
 
     @media(width < $breakpoint-desktop-small){
       flex-wrap: wrap;
+    }
+
+    .group-company{
+      display: flex;
+      gap: 8px;
+      align-items: center;
+
+      .footer-address-mobile{
+        @include typography-footer-address-mobile;
+
+        @media(width > $breakpoint-tablet-small){
+          display: none;
+        }
+
+        @media(width < $breakpoint-phone-large){
+          display: none;
+        }
+      }
     }
 
     .group-phones {
@@ -1127,21 +1210,36 @@ body {
         align-items: start;
       }
 
+      @media(width < $breakpoint-tablet-small) {
+        display: none;
+      }
+
       .footer-address{
         @include typography-footer-address;
+
+
 
         p{
           @media(width < $breakpoint-desktop-small){
             display: none;
           }
+
+          @media(width < $breakpoint-tablet-small){
+            display: block;
+          }
         }
       }
+
 
       .phone-item {
         display: flex;
         flex-direction: column;
         position: relative;
         @include typography-footer-address;
+
+        @media(width < $breakpoint-tablet-small) {
+          display: none;
+        }
 
         .email-link {
           display: flex;
@@ -1216,6 +1314,10 @@ body {
           grid-row: 1 / span 2;
           align-self: center;
           margin-top: 0;
+        }
+
+        @media(width < $breakpoint-tablet-small) {
+          display: none;
         }
       }
     }
