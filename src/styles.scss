@@ -19,6 +19,7 @@ $color-about-text: #666666;
 
 $container-width-desktop-large: 1400px;
 $container-width-desktop-small: 992px;
+$container-width-tablet-large: 768px;
 $nav-height: 64px;
 
 $breakpoint-desktop-large: 1920px;
@@ -41,6 +42,12 @@ $typography-map: (
                 "font-weight": 700,
                 "font-family": Akrobat
         ),
+        "slogan-tablet-large":(
+                "font-size": 16px,
+                "line-height": 24px,
+                "font-weight": 700,
+                "font-family": Akrobat
+        ),
         "phone-desktop-large":(
                 "font-size": 40px,
                 "line-height": 40px,
@@ -49,6 +56,12 @@ $typography-map: (
         ),
         "phone-desktop-small":(
                 "font-size": 32px,
+                "line-height": 32px,
+                "font-weight": 700,
+                "font-family": Akrobat
+        ),
+        "phone-tablet-large":(
+                "font-size": 24px,
                 "line-height": 32px,
                 "font-weight": 700,
                 "font-family": Akrobat
@@ -170,12 +183,20 @@ $typography-map: (
   @include apply-font("slogan-desktop-small");
 }
 
+@mixin typography-slogan-tablet-large {
+  @include apply-font("slogan-tablet-large");
+}
+
 @mixin typography-phone-desktop-large {
   @include apply-font("phone-desktop-large");
 }
 
 @mixin typography-phone-desktop-small {
   @include apply-font("phone-desktop-small");
+}
+
+@mixin typography-phone-tablet-large {
+  @include apply-font("phone-tablet-large");
 }
 
 @mixin typography-main-title {
@@ -266,6 +287,10 @@ body {
   @media(width < $breakpoint-desktop-small) {
     max-width: $container-width-desktop-small;
   }
+
+  @media(width < $breakpoint-tablet-large) {
+    max-width: $container-width-tablet-large;
+  }
 }
 
 .title{
@@ -286,7 +311,7 @@ body {
 }
 
 .header{
-  min-height: 200px;
+  min-height: 160px;
   padding: 30px 0;
   height: 320px;
   display: flex;
@@ -296,6 +321,10 @@ body {
   background-size: cover;
   color: $color-header;
 
+  @media(width < $breakpoint-tablet-large) {
+    height: auto;
+  }
+
   .header-container{
     width: 100%;
     display: flex;
@@ -303,6 +332,11 @@ body {
     align-items: center;
     flex-wrap: wrap;
     gap: 32px;
+
+    //&:last-child{
+    //  gap: 0px;
+    //}
+
     @media(width < $breakpoint-desktop-small) {
       flex-wrap: nowrap;
       gap: 16px;
@@ -317,6 +351,14 @@ body {
         gap: 16px;
       }
 
+      svg{
+        @media(width < $breakpoint-tablet-large) {
+          width: 80px;
+          height: 80px;
+        }
+      }
+
+
       .slogan{
         @include typography-slogan-desktop-large;
 
@@ -324,6 +366,12 @@ body {
           white-space: nowrap;
           @include typography-slogan-desktop-small;
         }
+
+        @media(width < $breakpoint-tablet-large) {
+          @include typography-slogan-tablet-large;
+        }
+
+
 
       }
     }
@@ -359,13 +407,35 @@ body {
       .contact-phone {
         white-space: nowrap;
         @include typography-phone-desktop-large;
+
         @media(width < $breakpoint-desktop-small) {
           @include typography-phone-desktop-small;
+        }
+
+        @media(width < $breakpoint-tablet-large) {
+          @include typography-phone-tablet-large;
         }
       }
 
       .contact-whatsapp {
         @include typography-header-contacts-whatsapp;
+      }
+    }
+
+    .burger{
+      span{
+        display: block;
+        height: 4px;
+        width: 24px;
+        background: #FFF;
+        border-radius: 9px;
+        opacity: 1;
+        left: 0;
+        margin: 4px;
+      }
+
+      @media(width > $breakpoint-tablet-large) {
+        display: none;
       }
     }
   }
@@ -374,6 +444,10 @@ body {
 
 .nav {
   margin: 40px auto 80px auto;
+
+  @media(width < $breakpoint-tablet-large) {
+    display: none;
+  }
 
   .nav-container {
     max-width: $container-width-desktop-large;
@@ -411,7 +485,6 @@ body {
     &.dropdown:hover {
       .dropdown-menu {
         display: block;
-        //visibility: visible;
         transform: translateY(0);
 
         @media(width < $container-width-desktop-large){
@@ -461,7 +534,6 @@ body {
     position: absolute;
     top: 100%;
     left: 0;
-    //min-width: 220px;
     width: 100%;
     background-color: $color-primary;
     padding: 10px 0;
@@ -532,6 +604,12 @@ body {
               display: none;
             }
           }
+
+          &:nth-last-child(2){
+          @media(width < $breakpoint-tablet-large) {
+            display: none;
+          }
+        }
         }
 
         .link-orange {
@@ -545,6 +623,14 @@ body {
         }
 
         .mobile-link {
+          display: none;
+
+          @media(width < $breakpoint-tablet-large) {
+            display: inline;
+          }
+        }
+
+        .mobile-link2 {
           display: none;
 
           @media(width < $breakpoint-desktop-small) {
@@ -572,10 +658,19 @@ body {
       justify-content: center;
       flex-direction: column;
 
+
+
       .slider-certificate {
         position: relative;
         z-index: 1;
         margin-bottom: 20px;
+
+        svg{
+          @media(width < $breakpoint-tablet-large) {
+            width: 280px;
+            height: auto;
+          }
+        }
       }
 
       .slider-arrow {
@@ -601,12 +696,20 @@ body {
           left: 50%;
           right: auto;
           transform: translate(-50%, -50%) translateX(-160px);
+
+          @media(width < $breakpoint-tablet-large) {
+            transform: translate(-50%, -50%) translateX(-120px);
+          }
         }
 
         &.slider-right {
           left: 50%;
           right: auto;
           transform: translate(-50%, -50%) translateX(160px);
+
+          @media(width < $breakpoint-tablet-large) {
+            transform: translate(-50%, -50%) translateX(120px);
+          }
         }
       }
 
@@ -646,6 +749,12 @@ body {
 
       @media(width < $container-width-desktop-large){
         justify-items: center;
+      }
+
+      @media(width < $breakpoint-tablet-large){
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+        gap: 16px;
       }
 
       &__card {
@@ -749,8 +858,17 @@ body {
       grid-template-columns: 1fr 1fr 1fr 1fr;
       gap: 40px;
 
+      @media(width < $breakpoint-tablet-large){
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
       &__news{
         grid-column: 1 / 3;
+
+        @media(width < $breakpoint-tablet-large){
+          grid-column: 1 / -1;
+        }
 
         .news-list {
           margin-bottom: 40px;
@@ -760,6 +878,10 @@ body {
             border-radius: 32px;
             padding: 32px;
             margin-bottom: 40px;
+
+            @media(width < $breakpoint-tablet-large){
+              margin-bottom: 16px;
+            }
 
             .news-date {
               display: flex;
@@ -798,9 +920,18 @@ body {
       &__gosuslugi{
         grid-column: 3 / 5;
 
+        @media(width < $breakpoint-tablet-large){
+          grid-column: 1 / -1;
+          display: flex;
+          justify-content: center;
+        }
+
         svg{
           @media(width < $container-width-desktop-large){
-            width: calc(100%);
+            width: 100%;
+            height: auto;
+            max-width: 600px;
+
           }
         }
       }
