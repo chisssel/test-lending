@@ -8,6 +8,7 @@ module.exports = {
     output: {
         path: path.join(__dirname, 'dist'),
         filename: 'index.[contenthash].js',
+        publicPath: '/Brevis_lending',
     },
     module: {
         rules: [
