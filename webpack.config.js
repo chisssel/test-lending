@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     entry: path.join(__dirname, 'src', 'index.js'),
     output: {
-        path: path.join(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'docs'),
         filename: 'index.[contenthash].js',
         publicPath: '/Brevis_lending',
     },
